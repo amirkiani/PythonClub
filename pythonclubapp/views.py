@@ -9,3 +9,7 @@ def index (request):
 def gettypes(request):
     type_list=ProductType.objects.all()
     return render(request, 'pythonclubapp/types.html' ,{'type_list' : type_list})
+
+def getproducts(request):
+    products_list=Product.objects.all()
+    return render(request, 'techapp/products.html', {'products_list': products_list})
