@@ -12,4 +12,15 @@ def gettypes(request):
 
 def getproducts(request):
     products_list=Product.objects.all()
-    return render(request, 'techapp/products.html', {'products_list': products_list})
+    return render(request, 'pythonclubapp/products.html', {'products_list': products_list})
+
+def productdetails(request, id):
+    prod=get_object_or_404(Product, pk=id)
+    discount=prod.memberdiscount
+    reviews=Review.objects.filter(product=id).count()
+    context={
+        'prod' : prod,
+        'discount' : discount,
+        'reviews' : reviews,
+    }
+    return render(request, 'pythonclubapp/productdetails.html', context=context)
