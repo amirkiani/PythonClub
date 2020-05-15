@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ prod.productname }}</h2>
+<p>Product Type: {{ prod.producttype }} </p>
+<p>Added by: {{ prod.user }}</p>
+<p>Entry Date: {{ prod.productentrydate }}</p>
+<p>URL: {{ prod.producturl }}</p>
+<p>Description: {{ prod.productdescription }}</p>
+<p>Price: {{ prod.productprice }}</p>
+<p>Member discount: {{ discount }}</p>
+<p>No. Of Reviews: {{ reviews }}</p>
+
+{% endblock %}

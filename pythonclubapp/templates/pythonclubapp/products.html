@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Products</h2>
+<table class="table">
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+  </tr>
+  {% for p in products_list %}
+    <tr>
+        <td><a href="{% url 'productdetails' id=p.id %}">{{ p.productname }}</a></td>
+        <td> {{p.producttype }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
