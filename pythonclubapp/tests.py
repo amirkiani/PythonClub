@@ -73,3 +73,17 @@ def test_discount(self):
 def test_number_of_reviews(self):
         reviews=Review.objects.filter(product=self.prod).count()
         self.assertEqual(reviews, 2)
+
+#Form tests
+class ProductType_Form_Test(TestCase):
+    def test_typeform_is_valid(self):
+        form=ProductTypeForm(data={'typename': "type1", 'typedescription' : "some type"})
+        self.assertTrue(form.is_valid())
+
+def test_typeform_minus_descript(self):
+        form=ProductTypeForm(data={'typename': "type1"})
+        self.assertTrue(form.is_valid())
+
+def test_typeform_empty(self):
+        form=ProductTypeForm(data={'typename': ""})
+        self.assertFalse(form.is_valid())
