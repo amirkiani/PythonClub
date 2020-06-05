@@ -88,6 +88,10 @@ def test_typeform_empty(self):
         form=ProductTypeForm(data={'typename': ""})
         self.assertFalse(form.is_valid())
 
+def test_typeform_minus_descript(self):
+        form=ProductTypeForm(data={'typename': "type1", 'typedescription' : "some type"})
+        self.assertTrue(form.is_valid())
+
 class New_Product_authentication_test(TestCase):
     def setUp(self):
         self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
