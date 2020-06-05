@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import ProductType, Product, Review
 from .forms import ProductForm
 
@@ -22,6 +23,25 @@ def productdetails(request, id):
     }
     return render(request, 'pythonclubapp/productdetails.html', context=context)
 
+def newProduct(request):
+     form=ProductForm
+     if request.method=='POST':
+          form=ProductForm(request.POST)
+          if form.is_valid():
+               post=form.save(commit=True)
+               post.save()
+               form=ProductForm()
+     else:
+          form=ProductForm()
+     return render(request, 'pythonclubapp/newproduct.html', {'form': form})
+
+def loginmessage(request):
+    return render(request, 'pythonclubapp/loginmessage.html')
+
+def logoutmessage(request):
+    return render(request, 'pythonclubapp/logoutmessage.html')
+
+@login_required
 def newProduct(request):
      form=ProductForm
      if request.method=='POST':
